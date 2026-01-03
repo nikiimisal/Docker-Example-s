@@ -10,8 +10,6 @@ docker ps -a
 docker run -d -p 80:80 --name mynginx nginx
 docker ps
 exit
-
-
 ```
    <p align="center">
   <img src="https://github.com/nikiimisal/Docker-Example-s/blob/main/img/Screenshot%202026-01-03%20132346.png?raw=true" width="500" alt="Initialize Repository Screenshot">
@@ -66,7 +64,6 @@ docker pull httpd:trixie
 docker images
 docker run -d -P --name newhttpd httpd
 docker ps
-
 ```
 
 | **Docker-Hub Repo**    | **Terminal**          | **Terminal**          |
