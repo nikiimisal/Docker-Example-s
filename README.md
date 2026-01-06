@@ -202,7 +202,7 @@ By default, when a container is deleted, all data inside it is lost. Volumes sol
 
 > The functionality of all three volumes is similar; the only difference is the use case—when and where you need to use them.
 
-<a id="example-5"></a>
+<a id="example-41"></a>
 
 ### 1️⃣ Temporary Docker Volumes
 
@@ -247,7 +247,7 @@ They are commonly used for databases, application data, logs, and backups.
 
 ### 🔹 1. Bind Mount  
 
-- [Example](#example-4)
+- [Example](#example-6)
 
 A Bind Mount directly maps a specific directory from the host system into the container.
 
@@ -268,7 +268,7 @@ Key Points:
 
 ### 🔹 2. Named Volume
 
-- [Example](#example-5)
+- [Example](#example-7)
   
 A Named Volume is a Docker-managed volume with a user-defined name.
 
@@ -287,7 +287,7 @@ Key Points:
 
 ### 🔹 3. Anonymous Volume
 
-- [Example](#example-6)
+- [Example](#example-8)
 
 An Anonymous Volume is created automatically by Docker without a name.
 
