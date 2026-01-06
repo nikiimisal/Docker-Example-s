@@ -1,5 +1,46 @@
 # Docker-Example-s
 
+- [examples](#example-0)
+
+<table>
+  <thead>
+    <tr>
+      <th>Example </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <a href="#example-1">Example 1 –Deploying a Static Portfolio with Docker and Nginx</a><br>
+         <a href="#example-2">Example 2 –Share container (push-pull) Docker hub Also create doc-hub account</a><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+- [Docker Volume](#example-3)
+    - [Temporary](#example-4)
+    - [Permanent](#example-5)
+
+<table>
+  <thead>
+    <tr>
+      <th>Example </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <a href="#example-6">Example 1 – Bind Volume</a><br>
+        <a href="#example-7">Example 2 – Named Volume</a><br>
+        <a href="#example-8">Example 3 – Anonymous Volume</a><br>
+         </td>
+    </tr>
+  </tbody>
+</table>
+
+<a id="example-0"></a>
+<a id="example-1"></a>
 ### Ex. 1 .  Deploying a Static Portfolio with Docker and Nginx
 
 
@@ -44,6 +85,7 @@ docker cp myportfolio/ mynginx:/usr/share/nginx/html/
   
 
 ---
+<a id="example-2"></a>
 
 ### Ex. 2 .  I want to share the container. Until now, we have been using GitHub to share code, but here we will use a `Docker repository`
 
@@ -122,6 +164,7 @@ docker push nikiimisal/test_repo             # to push the code
 
 ---
 
+<a id="example-3"></a>
 
 # Docker Volume
 
@@ -159,6 +202,8 @@ By default, when a container is deleted, all data inside it is lost. Volumes sol
 
 > The functionality of all three volumes is similar; the only difference is the use case—when and where you need to use them.
 
+<a id="example-5"></a>
+
 ### 1️⃣ Temporary Docker Volumes
 
 Temporary volumes store data only for the lifetime of the container.
@@ -185,6 +230,8 @@ docker run -d \ --tmpfs /app/cache \ nginx
 
 ---
 
+<a id="example-5"></a>
+
 ### 2️⃣ Permanent Docker Volumes
 
 Permanent volumes are used when data must persist even after the container is stopped or removed.<br>
@@ -198,7 +245,9 @@ They are commonly used for databases, application data, logs, and backups.
 
 ## Permanent Volumes have 3 types:
 
-### 🔹 1. Bind Mount
+### 🔹 1. Bind Mount  
+
+- [Example](#example-4)
 
 A Bind Mount directly maps a specific directory from the host system into the container.
 
@@ -219,6 +268,8 @@ Key Points:
 
 ### 🔹 2. Named Volume
 
+- [Example](#example-5)
+  
 A Named Volume is a Docker-managed volume with a user-defined name.
 
 
@@ -236,6 +287,8 @@ Key Points:
 
 ### 🔹 3. Anonymous Volume
 
+- [Example](#example-6)
+
 An Anonymous Volume is created automatically by Docker without a name.
 
 Key Points:
@@ -251,6 +304,8 @@ Key Points:
 ---
 
 ## Example's
+
+<a id="example-6"></a>
 
 ### ex 1. Bind Volume
 
@@ -303,6 +358,8 @@ The container is now running and ready.
 
 
 ---
+
+<a id="example-7"></a>
 
 ### ex 2. Named Volume
 
@@ -380,6 +437,8 @@ Named Volume → Docker manages the storage location
   <img src="https://github.com/nikiimisal/Docker-Examples-and-Concepts/blob/main/img/aaaaa/Screenshot%202026-01-06%20094343.png?raw=true" width="500" alt="Initialize Repository Screenshot">
 </p>
 ---
+
+<a id="example-8"></a>
 
 ### ex 3. Anonymous Volume
 
