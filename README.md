@@ -558,6 +558,18 @@ Dockerfile → docker build → Docker Image → docker run → Container
 ```
 
 
+
+| **Terminal**    | ****          | 
+|--------------------------------|------------------------------------|
+| ![VS](https://github.com/nikiimisal/Docker-Examples-and-Concepts/blob/main/img/Screenshot%202026-01-07%20220634.png?raw=true) | ![AWS](https://github.com/nikiimisal/Docker-Examples-and-Concepts/blob/main/img/Screenshot%202026-01-07%20220647.png?raw=true) |
+
+
+
+| **Terminal**    | **Output ( Browser )**          | 
+|--------------------------------|------------------------------------|
+| ![VS](https://github.com/nikiimisal/Docker-Examples-and-Concepts/blob/main/img/Screenshot%202026-01-07%20220723.png?raw=true) | ![AWS](https://github.com/nikiimisal/Docker-Examples-and-Concepts/blob/main/img/Screenshot%202026-01-07%20190636.png?raw=true) |
+
+
 ---
 
 ### Difference between Dockerfile, Docker Image, and Docker Container
@@ -626,6 +638,18 @@ Why this is correct:
 - Follows Docker best practices
 
 
+
+
+
+| **Terminal**    | ****          | 
+|--------------------------------|------------------------------------|
+| ![VS](https://github.com/nikiimisal/Docker-Examples-and-Concepts/blob/main/img/Screenshot%202026-01-07%20220519.png?raw=true) | ![AWS](https://github.com/nikiimisal/Docker-Examples-and-Concepts/blob/main/img/Screenshot%202026-01-07%20220537.png?raw=true) |
+
+
+
+ <p align="center">
+  <img src="https://github.com/nikiimisal/Docker-Examples-and-Concepts/blob/main/img/Screenshot%202026-01-07%20192408.png?raw=true" width="500" alt="Initialize Repository Screenshot">
+</p>
 
 ---
 ---
