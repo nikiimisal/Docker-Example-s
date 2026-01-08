@@ -683,6 +683,26 @@ Why this is correct:
 
 ---
 
+### Advantages of Dockerfile Optimization
+
+- **Smaller Image Size:** Optimized images are lightweight, which saves storage and bandwidth.  
+- **Faster Builds & Pulls:** Less data to download and build means faster container startup.  
+- **Better Security:** Fewer packages and layers reduce the attack surface.  
+- **Easier Maintenance:** Clean Dockerfiles are easier to read and maintain.  
+- **Production Ready:** Optimized Dockerfiles perform well in production environments.
+
+---
+
+### Disadvantages / Limitations
+
+- **Extra Effort Required:** Writing optimized Dockerfiles takes more thought and planning.  
+- **Less Flexibility:** Minimal images may lack utilities or debugging tools by default.  
+- **Manual Installation Needed:** Extra tools or software are not pre-installed, so you need to install them manually if required.  
+- **Learning Curve:** Beginners may find optimization techniques (multi-stage builds, caching, etc.) slightly complex.  
+- **Not Always Necessary:** For small projects or quick prototypes, optimization may not provide noticeable benefits.
+
+---
+
 ## Ways to Minimize a Dockerfile
 
 ---
