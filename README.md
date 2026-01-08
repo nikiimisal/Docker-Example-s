@@ -954,11 +954,109 @@ COPY . .
 
 
 ---
+---
+
+# Database Container 
+
+>– Important Information & Best Practices
+
+A database container is a Docker container that runs a database service such as MySQL, PostgreSQL, or MongoDB.  <br>
+Databases are critical components, and special care must be taken while containerizing them.
+
+---
+
+## Very Important Rule: Do NOT Store Database Credentials in Dockerfile
+
+While writing a Dockerfile for a database, **it is NOT mandatory and NOT recommended** to write the database username and password inside the Dockerfile.
+
+### Why is this a very bad practice?
+
+- Dockerfile is part of source code and can be pushed to GitHub or shared. <br>
+- Anyone who gets access to the Dockerfile can see the database ID and password. <br>
+- If credentials are exposed, anyone can enter the database. <br>
+- This can lead to data theft, data loss, or security breaches. <br>
+- In real production environments, this is considered a serious security issue.
+
+---
+
+## Correct Approach: Pass Credentials at Runtime Using `-e`
+
+Instead of hardcoding credentials in the Dockerfile,   <br>
+we pass database credentials **at container runtime** using environment variables (`-e`).
+
+This way: <br>
+- Credentials are not stored in the image <br>
+- Dockerfile remains clean and secure <br>
+- Different environments (dev, test, prod) can use different credentials
+
+---
+
+## Example: MySQL Database Container (Best Practice)
+
+### Dockerfile (No ID / Password Stored)
+
+```
+FROM mysql:8.0
+EXPOSE 3306
+CMD ["mysqld"]
+```
+
+👉 Note:  
+No username or password is written inside the Dockerfile.
+
+---
+
+### Running the Database Container (Passing Credentials Securely)
+
+```
+docker run -d -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=myntra -p 3306:3306 --name mysql-db mysql
+```
 
 
+---
 
+## Explanation of the Runtime Command
 
+- `-e MYSQL_ROOT_PASSWORD=root`<br>  
+  Sets the MySQL root password at runtime.
 
+- `-e MYSQL_DATABASE=myntra`  <br>
+  Automatically creates a database named `myntra`.
+
+- `-p 3306:3306`  <br>
+  Exposes MySQL port to the host machine.
+
+- `mysql:8.0`  <br>
+  Uses the official MySQL image.
+
+---
+
+## Additional Best Practices for Database Containers
+
+- Always use **official database images** from Docker Hub.<br>
+- Never hardcode passwords in Dockerfile or source code.<br>
+- Use environment variables or secret managers.<br>
+- Use Docker volumes to persist database data.<br>
+- Restrict database port access in production.
+
+---
+
+## Conclusion
+
+When creating database containers:<br>
+- Writing ID and password in Dockerfile is **not mandatory**<br>
+- It is a **bad and insecure practice**<br>
+- Always pass credentials at runtime using `-e`<br>
+- This approach is secure, flexible, and industry standard<br>
+
+This method is widely used in real-world DevOps and production environments.
+
+---
+
+>Note:
+Here, we are storing database credentials only to understand how it works and how containers behave.<br>
+This is done purely for study and learning purposes.<br>
+Do not use this approach in real-world projects or production environments, as storing credentials like this is a bad security practice.
 
 
 
