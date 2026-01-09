@@ -511,6 +511,68 @@ Just like:
 | `RUN`       | Execute commands          |
 | `EXPOSE`    | Open a port               |
 | `CMD`       | Start application         |
+|  `COPY`     | copy files from host -> container |
+|  `ADD`      | Copy files from internet -> container |
+|  `ENTRYPOINT` | contains all the commands  |
+
+
+┌──────────────────────────── ENTRYPOINT vs CMD ────────────────────────────┐
+│                                                                           │
+│ ENTRYPOINT                         │ CMD                    │
+│ ──────────────────────────────────────── │ ───────────────────────────── │
+│ ▸ Used to define the MAIN command         │ ▸ Used to define default       │
+│   (executable) of the container           │   arguments or default command │
+│                                                                           │
+│ ▸ Commands are written in ENTRYPOINT      │ ▸ Arguments are usually        │
+│   (WHAT to run)                           │   written in CMD (HOW to run)  │
+│                                                                           │
+│ ▸ ENTRYPOINT cannot be overridden easily  │ ▸ CMD can be overridden while │
+│   using docker run                        │   running the container        │
+│                                                                           │
+│ ▸ ENTRYPOINT runs first and always runs   │ ▸ CMD runs after ENTRYPOINT   │
+│   when container starts                   │   (if ENTRYPOINT exists)      │
+│                                                                           │
+│ ▸ Only ONE ENTRYPOINT should be defined   │ ▸ Multiple CMD can exist but  │
+│   in a Dockerfile                         │   only the LAST CMD works     │
+│                                                                           │
+│ ▸ ENTRYPOINT is NOT compulsory            │ ▸ CMD is IMPORTANT             │
+│   (optional)                              │   (without CMD container may  │
+│                                           │    stop immediately)           │
+│                                                                           │
+│ ▸ ENTRYPOINT gives fixed behavior         │ ▸ CMD gives flexible behavior │
+│                                                                           │
+│ Example:                                  │ Example:                       │
+│ ENTRYPOINT ["nginx"]                      │ CMD ["-g", "daemon off;"]     │
+│                                                                           │
+│ docker run myimage                        │ docker run myimage /bin/sh    │
+│ → nginx -g daemon off                    │ → CMD overridden               │
+│                                                                           │
+
+
+
+
+┌──────────────────────────── COPY vs ADD ─────────────────────────────┐
+│                                                                       │
+│ COPY                     │ ADD                        │
+│ ─────────────────────────────── │ ──────────────────────────────── │
+│ ▸ Copy file from host to container    │ ▸ Copy file from internet to container     │
+│          │   │
+│                      │                                   │
+│                                                                       │
+│ ▸ Simpler, more predictable      │ ▸ Can do more complex tasks:     │
+│                                                                       │
+│ ▸ Does NOT unpack archives       │ ▸ Can unpack local .tar, .tar.gz │
+│   automatically                  │   or .tar.xz files automatically │
+│                                                                       │
+│ ▸ Cannot fetch files from URLs   │ ▸ Can fetch remote files from    │
+│                                   │   internet and add to image       │
+│                                                                       │
+│ ▸ Preferred for most use-cases   │ ▸ Use only when you need archive  │
+│                                   │   extraction or remote download   │
+│                                                                       │
+│ ▸ Simpler syntax, faster build   │ ▸ Slightly slower due to extra    │
+│                                   │   features                        │
+
 
 ---
 
