@@ -470,6 +470,8 @@ Explanation:
 
 ---
 
+<a id="example-9"></a>
+
 #  Dockerfile 🐳
 
 A Dockerfile is a plain text configuration file that contains a set of instructions used to build a Docker image.<br>
@@ -672,6 +674,8 @@ Why this is correct:
 
 ---
 ---
+
+<a id="example-10"></a>
 
 # Dockerfile Optimization 
 
@@ -974,6 +978,8 @@ COPY . .
 
 ---
 ---
+
+<a id="example-11"></a>
 
 # Database Container 
 
