@@ -43,7 +43,7 @@
 - [Dockerfile & How To Use](#example-9)
 - [Docker Optimization](#example-10)
 - [Database Container](#example-11)
-
+- [Docker Network](#example-12)
 
 
 
@@ -1115,6 +1115,79 @@ CMD ["mysqld"]
 
 ---
 
+<a id="example-12"></a>
+
+
+# Docker Network
+
+##  🐳 What is a Docker Network?
+
+A Docker network is a way for Docker containers to communicate with each other and with the outside world (host system or internet) in a secure and controlled manner.
+
+
+In simple words:<br>
+👉 Docker networking connects containers just like networking connects computers.
+
+
+---
+
+## 🔹 Why Docker Network is Needed?
+
+
+Without a network:
+
+- Containers cannot talk to each other
+- Applications like Nginx → Node → Database won’t work
+
+With Docker network:
+
+
+- Containers can communicate using container names or ID'S
+- Traffic is isolated & secure
+- Easy service-to-service communication
+
+---
+
+## 🔹 How Docker Network Works
+
+- Each container gets:
+   - An IP address
+   - A network interface
+- Docker acts like a virtual router
+- Containers in the same network can talk directly
+
+---
+
+## 🔹 Types of Docker Networks
+
+### 1️⃣ Bridge Network (Default)
+
+
+- Communicate between host and container
+- Establishing communication between containers C1 & C2 ,C3
+- Default network created by Docker
+- Containers can talk inside the same bridge
+- Used for single-host applications
+
+Example:
+
+```
+docker network create --subnet 11.0.0.0/16 --driver bridge net-1
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
 
 
 
@@ -1140,28 +1213,177 @@ CMD ["mysqld"]
 
 
 
+# Checking Container Communication in Docker
+
+## Why Container Communication Is Important
+
+- Applications have multiple parts (frontend, backend, database)
+- These parts must talk to each other to work
+- Communication allows data flow between services
+- Needed for microservices architecture
+- Improves security using network isolation
+- Helps in scaling applications
+
+---
+---
+
+## Case 1️⃣: Containers on the Same Network (Communication Works)
+
+Concept
+
+- If containers are in the same Docker network
+- They can communicate with each other
+- We test this using `ping`
 
 
+```
+Step 1: Create a Network
+
+ docker network create --subnet 11.0.0.0/16 --driver bridge net-1
+--------------------------------------------------------------------------------
+Step 2: Run Two Containers in the Same Network
+
+docker run -d --name c1 --network net-1 nginx
+docker run -d --name c2 --network net-1 nginx
+
+-----------------------------------------------------------------------------------
+Step 3: Enter Container c1
+
+docker exec -it c2 ping
+
+-------------------------------------------------------------------------------------
+Step 4: Install ping (if not installed)
+
+apt update
+apt install iputils-ping -y
+
+----------------------------------------------------------------------------------------
+```
+✅ Result:
+
+- Ping works
+- Containers are communicating
+- This confirms same-network communication
+
+---
+---
+
+## Case 2️⃣: Containers on Different Networks (No Communication)
+
+Concept
+
+- Containers in different Docker networks
+- Cannot communicate by default
+
+```
+Step 1: Create Another Network
+
+ docker network create --subnet 12.0.0.0/16 --driver bridge net-2
+
+----------------------------------------------------------------
+Step 2: Run Container in Different Network
+
+docker run -d --name c3 --network net-2 nginx
+
+----------------------------------------------------------------
+Step 3: Try to Ping from c1
+
+docker exec -it c3 ping
+--------------------------------------------------------------
+```
+
+❌ Result:
+
+- Ping fails
+- Containers are in different networks
+
+---
+
+## Case 3️⃣: Connect Containers Across Networks
+
+Concept
+
+- Docker allows one container to join multiple networks
+- After connecting, communication works
+
+```
+Command to Connect c3 to mynet
+
+docker network connect mynet c3
+
+---------------------------------------------------
+Ping Again from c1
+
+docker exec -it c3 ping
+---------------------------------------------
+
+```
+
+✅ Result:
+
+- Ping works
+- Container c3 is now connected to both networks
+
+Create a container without specifying any network type, Docker will automatically connect it to the default bridge network.
 
 
+ <p align="center">
+  <img src="https://github.com/nikiimisal/Docker-Examples-and-Concepts/blob/main/img/Screenshot%202026-01-15%20113120.png?raw=true" width="500" alt="Initialize Repository Screenshot">
+</p>
 
 
+Now, create another network, which is a custom Docker network (Bridg Network).
+
+ <p align="center">
+  <img src="https://github.com/nikiimisal/Docker-Examples-and-Concepts/blob/main/img/Screenshot%202026-01-15%20113052.png?raw=true" width="500" alt="Initialize Repository Screenshot">
+</p>
+
+ <p align="center">
+  <img src="https://github.com/nikiimisal/Docker-Examples-and-Concepts/blob/main/img/Screenshot%202026-01-15%20112939.png?raw=true" width="500" alt="Initialize Repository Screenshot">
+</p>
+
+Now, we want to test connectivity using ping.
+So, run the ping command and ping c5 from c6 (or c6 from c5).
+In this case, we will ping c5 from c6, so use the following command.
+
+```
+docker exec -it c5 ping 11.0.0.2
+```
+In this command, the IP address used is the private IP of container c6, which you can find by running this command.
+
+```
+docker inspect c6
+```
+ <p align="center">
+  <img src="https://github.com/nikiimisal/Docker-Examples-and-Concepts/blob/main/img/Screenshot%202026-01-15%20115524.png?raw=true" width="500" alt="Initialize Repository Screenshot">
+</p>
 
 
+When you try to run the ping command, you may get an error because ping is not installed.
+So, first install ping, and then try again.
+
+ <p align="center">
+  <img src="https://github.com/nikiimisal/Docker-Examples-and-Concepts/blob/main/img/Screenshot%202026-01-15%20113906.png?raw=true" width="500" alt="Initialize Repository Screenshot">
+</p>
 
 
+Now, when you try to use the ping command to check connectivity between two networks, you will get an error because the networks are not connected.
+So, first connect the networks, and then try again.
+ <p align="center">
+  <img src="https://github.com/nikiimisal/Docker-Examples-and-Concepts/blob/main/img/Screenshot%202026-01-15%20114653.png?raw=true" width="500" alt="Initialize Repository Screenshot">
+</p>
 
+Run docker inspect again, because now you will see two IP addresses.
+Take the new IP address and use it to run the command.
+ <p align="center">
+  <img src="https://github.com/nikiimisal/Docker-Examples-and-Concepts/blob/main/img/Screenshot%202026-01-15%20115019.png?raw=true" width="500" alt="Initialize Repository Screenshot">
+</p>
 
+Here you go — the output clearly shows that communication between the containers is working.
 
-
-
-
-
-
-
-
-
-
+ <p align="center">
+  <img src="https://github.com/nikiimisal/Docker-Examples-and-Concepts/blob/main/img/Screenshot%202026-01-15%20115121.png?raw=true" width="500" alt="Initialize Repository Screenshot">
+</p>
 
 
 
