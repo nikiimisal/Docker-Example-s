@@ -1545,12 +1545,12 @@ Key Benefits :
 ```
 ┌──────────────────────── Docker Compose Commands ────────────────────────┐
 │                                                                         │
-│ docker compose up        # Start all services                            │
-│ docker compose up -d     # Start all services in background              │
+│ docker compose up        # Start all services                           |
+│ docker compose up -d     # Start all services in background             │
 │                                                                         │
-│ docker compose down      # Stop and remove all services                  │
+│ docker compose down      # Stop and remove all services                 │
 │                                                                         │
-│ docker compose ps        # Show running containers status                │
+│ docker compose ps        # Show running containers status               │
 │                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 
@@ -1558,13 +1558,44 @@ Key Benefits :
 
 ---
 
-To understand this concept better, let’s do a mini project.
-To see the project, 👉 [click here.](https://github.com/nikiimisal/Project_Wordpress-deployment-using-_-Docker-Compose)
+##  To understand this concept better, let’s do a mini project.
+   To see the project, 👉 [click here.](https://github.com/nikiimisal/Project_Wordpress-deployment-using-_-Docker-Compose)
+
+---
+---
+
+# Docker Compose Setup ( Installication )
+
+### 1. Download the latest stable Docker Compose binary
+
+```
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.29.7/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
+
+
+### 2. Make it executable
+
+```
+sudo chmod +x /usr/local/bin/docker-compose
+ ```
+
+### 3. Verify installation
+
+```
+docker-compose version
+```
+
+
+
+ <p align="center">
+  <img src="https://github.com/nikiimisal/Docker-Examples-and-Concepts/blob/main/img/Screenshot%202026-01-16%20053442.png?raw=true" width="500" alt="Initialize Repository Screenshot">
+</p>
+
+
 
 ---
 ---
 ---
-
 
 
 
