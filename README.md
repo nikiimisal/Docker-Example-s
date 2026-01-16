@@ -1181,6 +1181,8 @@ With Docker network:
 > Right now, we mainly need only three network types.<br>
 If you want to explore more network types, then for reference 👉 [click here.](https://docs.docker.com/engine/network/drivers/)
 
+<a id="example-13"></a>
+
 ### 1️⃣ Bridge Network (Default)
 
 ### When should you use a Docker Bridge Network?
@@ -1211,6 +1213,8 @@ docker network create --subnet 11.0.0.0/16 --driver bridge net-1
 
 
 ---
+
+<a id="example-14"></a>
 
 ### 2️⃣ Host Network
 
@@ -1254,6 +1258,8 @@ docker run -d --network host --name c1 nginx
 
 ---
 
+<a id="example-15"></a>
+
 ### 3️⃣ None Network
 
 If you don’t want any IP assigned to your container, then use the none network.
@@ -1294,6 +1300,8 @@ It is mainly used for secure tasks, data storage, or security-related work.
 ---
 
 
+<a id="example-16"></a>
+
 ### 4️⃣ Overlay Network
 
 
@@ -1311,7 +1319,7 @@ It is mainly used in Docker Swarm for distributed and scalable applications.
 ---
 
 
-
+<a id="example-17"></a>
 
 
 # Checking Container Communication in Docker
@@ -1327,6 +1335,8 @@ It is mainly used in Docker Swarm for distributed and scalable applications.
 
 ---
 ---
+
+<a id="example-18"></a>
 
 ## Case 1️⃣: Containers on the Same Network (Communication Works)
 
@@ -1369,6 +1379,8 @@ apt install iputils-ping -y
 ---
 ---
 
+<a id="example-19"></a>
+
 ## Case 2️⃣: Containers on Different Networks (No Communication)
 
 Concept
@@ -1400,6 +1412,8 @@ docker exec -it c5 ping 11.0.0.2
 
 ---
 
+<a id="example-20"></a>
+
 ## Case 3️⃣: Connect Containers Across Networks
 
 Concept
@@ -1427,6 +1441,8 @@ docker exec -it c5 ping 172.17.0.3
  
 ---
 ---
+
+<a id="example-21"></a>
 
 ## here you see how Case 3 works :
 
@@ -1495,6 +1511,8 @@ Here you go — the output clearly shows that communication between the containe
 ---
 ---
 
+<a id="example-22"></a>
+
 # Docker Compose
 
 ###  🐳 What is Docker Compose?
@@ -1562,6 +1580,8 @@ Key Benefits :
 ---
 
 
+
+<a id="example-23"></a>
 
 # Docker Compose Setup ( Installication )
 
