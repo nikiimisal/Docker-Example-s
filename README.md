@@ -1541,28 +1541,9 @@ Key Benefits :
 - Best for development & learning
 
 ---
-
-```
-┌──────────────────────── Docker Compose Commands ────────────────────────┐
-│                                                                         │
-│ docker compose up        # Start all services                           |
-│ docker compose up -d     # Start all services in background             │
-│                                                                         │
-│ docker compose down      # Stop and remove all services                 │
-│                                                                         │
-│ docker compose ps        # Show running containers status               │
-│                                                                         │
-└─────────────────────────────────────────────────────────────────────────┘
-
-```
-
 ---
 
-##  To understand this concept better, let’s do a mini project.
-   To see the project, 👉 [click here.](https://github.com/nikiimisal/Project_Wordpress-deployment-using-_-Docker-Compose)
 
----
----
 
 # Docker Compose Setup ( Installication )
 
@@ -1595,7 +1576,42 @@ docker-compose version
 
 ---
 ---
+
+##  To understand this concept better, let’s do a mini project.
+   To see the project, 👉 [click here.](https://github.com/nikiimisal/Project_Wordpress-deployment-using-_-Docker-Compose)
+
 ---
+
+
+
+
+
+
+---
+
+```
+┌──────────────────────── Docker Compose Commands ────────────────────────┐
+│                                                                         │
+│ docker compose up        # Start all services                           |
+│ docker compose up -d     # Start all services in background             │
+│                                                                         │
+│ docker compose down      # Stop and remove all services                 │
+│                                                                         │
+│ docker compose ps        # Show running containers status               │
+│                                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+
+```
+
+---
+
+
+
+---
+---
+
+
+
 
 
 
